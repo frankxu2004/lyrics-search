@@ -1,0 +1,147 @@
+﻿$def with (form,command,pages)
+<html>
+<head>
+<style type="text/css">
+h1{
+	text-shadow: 5px 5px 5px #FFFF77;
+	color: #000088;
+	font-size: 200%;
+}
+
+body{
+	padding-left:15px;
+	background: #EEFFBB;
+	
+}
+.result{
+	text-align:center;
+	background-color: #FFFFBB;
+}
+.item{
+	margin-bottom:20px;
+}
+.item e{
+	font-size:medium;
+	font-family:Monospace;
+	font-weight:normal;
+	line-height:120%;
+	display:block;
+	width:20em;
+}
+.item b{
+	font-size:medium;
+	font-family:Monospace;
+	font-weight:normal;
+	line-height:120%;
+	display:block;
+	width:20em;
+}
+.item c{
+	font-size:medium;
+	font-family:Monospace;
+	font-weight:normal;
+	line-height:120%;
+	display:block;
+	width:20em;
+}
+.item f{
+	font-size:medium;
+	font-family:Monospace;
+	font-weight:normal;
+	line-height:120%;
+	display:block;
+	width:20em;
+}
+.url{
+	color:#008000;
+	font-family:arial;
+	
+}
+em{
+	font-style: normal;
+	color:red;
+}
+.item img{
+	margin:auto;
+	width:13em;
+	transition:width 1s, height 1s;
+	-moz-transition:width 1s, height 1s, -moz-transform 1s; /* Firefox 4 */
+	-webkit-transition:width 1s, height 1s, -webkit-transform 1s; /* Safari and Chrome */
+	-o-transition:width 1s, height 1s, -o-transform 1s; /* Opera */
+}
+.item img:hover{
+	transform:rotate(360deg);
+	-moz-transform:rotate(360deg); /* Firefox 4 */
+	-webkit-transform:rotate(360deg); /* Safari and Chrome */
+	-o-transform:rotate(360deg); /* Opera */
+}
+
+section{
+	padding:10px;
+	margin:20px;
+	float:left;
+	background-color:#FFFFFF;
+}
+
+input[type="text"]
+{
+	margin-left:auto;
+	margin-right:auto;
+	width:520px;
+	float:left;
+	border: 1px solid #CDCDCD;
+	border-color: #9A9A9A #CDCDCD #CDCDCD #9A9A9A;
+	padding: 4px 7px;
+	font: 16px arial;
+}
+#search{
+	width: 95px;
+	height: 32px;
+	font-size: 14px;
+	float:right;
+	background: #DDD url(http://s1.bdstatic.com/r/www/img/i-1.0.0.png);
+	border: 0;
+	cursor: pointer;
+}
+</style>
+<meta charset="utf-8">
+<title>搜索:$command</title>
+</head>
+<body>
+<h1>歌名去哪儿了</h1>
+
+<form action="/i" method="GET">
+    $:form.render()
+</form>
+<script type="text/javascript">
+x=document.getElementById('search')
+x.innerText="搜歌名"
+</script>
+$if command:
+    <h2 class="result">"$command"的搜索结果</h1>
+	<h4 class="resultnum">共 $len(pages) 个结果</h2>
+	<div class="container">
+	$for page in pages:
+		<section class="item">
+		<img src=$page["imgurl"]></img>
+		<br>
+		<e>歌名：$page["name"]</e>
+		<b>歌手：$page["singer"]</b>
+		<c>专辑名称：$page["album"]</c>
+		<br>
+		<f>
+		$for item in page["lyric"]:
+			$if item[1]==1:
+				<em>$item[0]</em>
+			$else:
+				$item[0]
+		</f>
+		<br>
+		<a href=$page["downloadurl"]>下载地址</a>
+		</section>
+	
+	</div>
+	
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+﻿$def with(form)
+<html>
+<head>
+<style type="text/css">
+
+body{
+	background:url(http://imgstore.cdn.sogou.com/app/a/11220002/4562_pc.jpg);
+	background-size: contain;
+}
+
+.container{
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	padding-top: 100px;
+}
+h1{
+	font-size: 300%;
+	text-align:center;
+	font-family:"微软雅黑";
+	text-shadow: 5px 5px 5px #FFFF77;
+	color: #000088;
+}
+p.copyright{
+	text-align:center;
+	font-family: "微软雅黑";
+	font-size: 60%;
+	color: #444444;
+
+}
+
+form{
+	vertical-align: top;
+}
+
+input[type="text"]
+{
+	margin-left:auto;
+	margin-right:auto;
+	width:520px;
+	float:left;
+	border: 1px solid #CDCDCD;
+	border-color: #9A9A9A #CDCDCD #CDCDCD #9A9A9A;
+	padding: 4px 7px;
+	font: 16px arial;
+	
+}
+#search{
+	width: 95px;
+	height: 32px;
+	font-size: 14px;
+	float:right;
+	background: #DDD url(http://s1.bdstatic.com/r/www/img/i-1.0.0.png);
+	border: 0;
+	cursor: pointer;
+}
+</style>
+<meta charset="utf-8">
+<title>歌名去哪儿了</title>
+</head>
+<body>
+<div class="container">
+<h1>歌名去哪儿了</h1>
+<form action="/i" method="GET">
+    $:form.render()
+</form>
+<script type="text/javascript">
+x=document.getElementById('search')
+x.innerText="找歌名"
+</script>
+<div>
+<br><br><br><br><br><br><br><br>
+<p class="copyright">版权归“歌名去哪儿了”工作室所有
+<br>
+by 吴思远 张晔 顾昊 许方正</p>
+</body>
+</html>
